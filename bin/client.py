@@ -41,10 +41,13 @@ def main():
     elif choice == 2:
         start_multiplayer(your_player)
 
-def start_single_player(player):
+def start_single_player(player : Player):
     pass
 
-def start_multiplayer(player):
-    pass
+def start_multiplayer(player : Player):
+    in_menu = True
+    
+
+
 
 main()

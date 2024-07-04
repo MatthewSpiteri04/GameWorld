@@ -39,7 +39,7 @@ class ColourConsole:
         t.sleep(time*2)
 
     def get_input(self, prompt):
-        response = input(f"{self.white}{prompt}{self.red}")
+        response = input(f"{self.white}{prompt}{self.yellow}")
         print(self.white, end="")
         return response
 
