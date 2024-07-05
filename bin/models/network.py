@@ -12,7 +12,6 @@ class Network:
     def connect(self):
         try:
             self.client.connect(self.addr)
-            return self.client.recv(2048).decode()
         except:
             pass
 
@@ -20,5 +19,18 @@ class Network:
         try:
             self.client.send(pickle.dumps(data))
             return pickle.loads(self.client.recv(2048*2))
+        except socket.error as e:
+            print(e)
+
+    def send_without_repsonse(self, data):
+        try:
+            self.client.send(pickle.dumps(data))
+        except socket.error as e:
+            print(e)
+
+    def disconnect(self):
+        try:
+            self.client.shutdown(socket.SHUT_RDWR)
+            self.client.close()
         except socket.error as e:
             print(e)

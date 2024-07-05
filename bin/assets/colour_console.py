@@ -42,7 +42,17 @@ class ColourConsole:
         response = input(f"{self.white}{prompt}{self.yellow}")
         print(self.white, end="")
         return response
+    
+    def server_says(self, msg):
+        print(f"{self.yellow}[Server]: {self.white}", end=self.white)
+        print(msg)
+        print()
 
+    def error_message(self, msg):
+        self.line()
+        self.print_new_line(msg, self.red, 0.05)
+        self.line()
+        
     def line(self):
         print()
     
