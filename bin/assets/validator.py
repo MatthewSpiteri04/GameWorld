@@ -18,3 +18,13 @@ def multiplayer_menu(input):
             return True
     except ValueError:
         return False
+    
+def rps(input):
+    try:
+        int_input = int(input)
+        if int_input < 1 or int_input > 3:
+            return False
+        else:
+            return True
+    except ValueError:
+        return False
