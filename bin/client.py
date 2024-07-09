@@ -44,9 +44,9 @@ def main():
         else:
             cc.error_message("Invalid choice, please choose between [1] or [2]!")
     cc.clear()
-    if choice == 1:
+    if int(choice) == 1:
         start_single_player(your_player)
-    elif choice == 2:
+    elif int(choice) == 2:
         start_multiplayer(your_player)
 
 
