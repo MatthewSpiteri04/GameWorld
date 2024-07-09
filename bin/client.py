@@ -118,7 +118,7 @@ def rock_paper_scissors(current_player : Player):
                 game.player2.choice = int(choice)
                 n.send_without_repsonse(Request("update_game_player", "rock_paper_scissors", game.player2, 2))
             cc.line()
-            cc.print_new_line("You chose " + str(game.choices[int(choice)-1]) + ", Waiting for " + str(get_other_player_name(current_player.id, game.players)) + " to choose...")
+            cc.print_new_line("You chose " + str(game.choices[int(choice)-1]) + ", Waiting for " + str(get_other_player_name(current_player.id, game.players)) + " to choose...", time = 0.05)
             while True:
                 try:
                     response : Response = n.send(Request("get_game", "rock_paper_scissors", current_player))
@@ -133,9 +133,8 @@ def rock_paper_scissors(current_player : Player):
             game.player1.ready = False
             game.player2.ready = False
             cc.line()
-            cc.print_new_line(str(game.player1.name) + " chose " + str(game.choices[game.player1.choice-1]))
-            cc.print_new_line(str(game.player2.name) + " chose " + str(game.choices[game.player2.choice-1]))
-            cc.print_new_line()
+            cc.print_new_line(str(game.player1.name) + " chose " + str(game.choices[game.player1.choice-1]), time = 0.05)
+            cc.print_new_line(str(game.player2.name) + " chose " + str(game.choices[game.player2.choice-1]), time = 0.05)
             cc.line()
             if winner is not None and winner.id == current_player.id:
                 cc.print_new_line(winner.name + " Wins!", cc.green)
