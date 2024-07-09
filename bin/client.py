@@ -4,6 +4,8 @@ from models.player import Player, RockPaperScissorsPlayer
 from models.network import Network
 from models.transfer import Request, Response
 from models.game import Game, RockPaperScissors
+import colorama
+colorama.init(autoreset=True)
 
 cc = ColourConsole()
 n = Network()
@@ -23,7 +25,9 @@ def main():
     your_player = Player(cc.get_input("What's your name: "))
     cc.line()
     cc.print_space("Welcome,")
-    cc.print_new_line(your_player.name + "!", cc.red)
+    cc.print(your_player.name, cc.yellow)
+    cc.print_new_line("!")
+    cc.line()
     cc.print_space("Press")
     cc.print_space("[Enter]", cc.yellow)
     cc.get_input("To Proceed...")

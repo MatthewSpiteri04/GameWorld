@@ -71,8 +71,8 @@ def threaded_client(conn, game_id):
             print("Closing Game", game_id)
     except:
         pass
-    # THIS MUST CHANGE ACCORDING TO GAME
-    player_counter.rock_paper_scissors_count -= 1
+    if type(game) is RockPaperScissors:
+        player_counter.rock_paper_scissors_count -= 1
     conn.close()
 
 
