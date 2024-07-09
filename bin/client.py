@@ -117,7 +117,8 @@ def rock_paper_scissors(current_player : Player):
                 game.player2.ready = True
                 game.player2.choice = int(choice)
                 n.send_without_repsonse(Request("update_game_player", "rock_paper_scissors", game.player2, 2))
-
+            cc.line()
+            cc.print_new_line("You chose " + str(game.choices[int(choice)]) + ", Waiting for " + str(get_other_player_name(current_player.id, game.players)) + " to choose...")
             while True:
                 try:
                     response : Response = n.send(Request("get_game", "rock_paper_scissors", current_player))
@@ -131,13 +132,18 @@ def rock_paper_scissors(current_player : Player):
             winner = game.determine_winner()
             game.player1.ready = False
             game.player2.ready = False
+            cc.line()
+            cc.print_new_line(str(game.player1.name) + " chose " + str(game.choices[game.player1.choice]))
+            cc.print_new_line(str(game.player2.name) + " chose " + str(game.choices[game.player2.choice]))
+            cc.print_new_line()
+            cc.line()
             if winner is not None and winner.id == current_player.id:
                 cc.print_new_line(winner.name + " Wins!", cc.green)
             elif winner is not None and winner.id != current_player.id:
                 cc.print_new_line(winner.name + " Wins!", cc.red)
             else:
                 cc.print_new_line("It's a Draw!")
-
+            cc.line()
             response : Response = n.send(Request("update_game", "rock_paper_scissors", game))
             game = response.data
 
